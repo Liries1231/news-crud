@@ -27,6 +27,7 @@ public class NewsService {
         newsRepository.deleteById(id);
     }
 
+
     public News newsAdd(News news) {
         news.setCreationDate(new Date());
         return newsRepository.save(news);
