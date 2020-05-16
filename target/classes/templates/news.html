@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>News page</title>
+</head>
+<body>
+<div th:switch="${news}">
+    <div th:case="*">
+        <h2>News</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>CreationDate</th>
+                <th>UpdateDate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="news : ${news}">
+                <td th:text="${news.id}"></td>
+                <td th:text="${news.author}"></td>
+                <td th:text="${news.title}"></td>
+                <td th:text="${news.description}"></td>
+                <td th:text="${news.creationDate}"></td>
+                <td th:text="${news.updateDate}"></td>
+                <td><a th:href="@{news-edit/{id}(id=${news.id})}">Edit</a></td>
+                <td><a th:href="@{news-delete/{id}(id=${news.id})}">Delete</a></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/news-create">Create news</a></p>
+
+
+</div>
+</body>
+</html>

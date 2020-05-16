@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>News editor page</title>
+
+</head>
+<body>
+
+<h2>News editor</h2>
+<form action="#" th:action = "@{news-edit}" th:object = "${news}" method="post">
+    <label for= "id">id</label>
+    <input readonly type="number" th:field = *{id} id="id" placeholder="id">
+    <br/>
+    <label for= "author">Author</label>
+    <input  type="text" th:field = *{author} id="author" placeholder="Change author">
+    <label for= "title">Title</label>
+    <input  type="text" th:field = *{title} id="title" placeholder="Change title">
+    <label for= "description">Description</label>
+    <input  type="text" th:field = *{description} id="description" placeholder="Change description">
+
+    <input type="submit" value="Change news">
+
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
