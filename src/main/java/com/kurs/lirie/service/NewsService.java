@@ -17,7 +17,6 @@ public class NewsService {
 
 
 
-
     public Page<News> findAll(Pageable pageable) { //read
         //select *from news;
         return newsRepository.findAll(pageable);

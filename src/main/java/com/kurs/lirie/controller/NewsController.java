@@ -32,6 +32,7 @@ public class NewsController {
     @GetMapping("/news")
     public String findAll(Model model,
                           @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC)Pageable pageable) {
+        Page<News> page = newsService.findAll(pageable);
         Page<News> news = newsService.findAll(pageable);
 
         model.addAttribute("news", news);
