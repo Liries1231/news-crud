@@ -9,13 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface NewsRepository extends JpaRepository<News,Long> {
 
     void deleteById(Long id);
-
-
-
-
-
-
-
-
-
 }

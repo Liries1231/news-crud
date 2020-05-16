@@ -1,10 +1,113 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+        crossorigin="anonymous"
+    />
+    <style>
+        body {
+            min-height: 100vh;
+            background: #f8f8f8;
+            font-family: 'Roboto';
+            font-size: 18px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .container {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            max-width: 100%;
+            width: 630px;
+            padding: 40px 65px 200px 65px;
+            background: #ffffff;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .container > p {
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .disclaimer {
+            display: flex;
+            align-self: flex-start;
+            margin-top: 20px;
+            margin-bottom: 54px;
+            color: #ffd205;
+        }
+
+        .disclaimer > img {
+            padding-right: 15px;
+        }
+
+        .disclaimer > p {
+            margin-top: 0;
+            font-weight: 500;
+        }
+
+        .button {
+            cursor: pointer;
+            height: 44px;
+            padding: 11px 24px;
+            border-radius: 4px;
+            border: 0;
+        }
+
+        .next {
+            color: #33c100;
+        }
+
+        .previous {
+            color: #0067c1;
+        }
+
+        .button_cancel {
+            background: transparent;
+            color: #ffd205;
+            margin-right: 12px;
+        }
+
+        .button_allow {
+            background: #ffd205;
+            color: #fff;
+        }
+
+        .buttons__group {
+            display: flex;
+            background: rgba(255, 210, 5, 0.05);
+            border-radius: 4px;
+            padding: 13px 15px;
+        }
+    </style>
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,latin-ext"
+        media="all"
+    />
     <title>News page</title>
 </head>
+
+
 <body>
+
 <div th:switch="${news}">
     <div th:case="*">
         <h2>News</h2>
@@ -29,25 +132,24 @@
                 <td th:text="${news.updateDate}"></td>
                 <td><a th:href="@{news-edit/{id}(id=${news.id})}">Edit</a></td>
                 <td><a th:href="@{news-delete/{id}(id=${news.id})}">Delete</a></td>
-
-
             </tr>
             </tbody>
         </table>
     </div>
-    <p>
-        <a href="/news-create">Create news</a>
-        <p>
-
-
-        <a href="/news">1</a>
-        <a href="/news?page=1">2</a>
-</p>
-
-
-
 
 
 </div>
+
+    <a href="/news-create">Create news</a>
+
+    <a th:if="${nextPage}" th:href="${nextPage}" class="next">
+        Следующая
+    </a>
+
+    <a th:if="${previousPage}" th:href="${previousPage}" class="previous">
+        Предыдущая
+    </a>
+
+
 </body>
 </html>
